@@ -18,6 +18,7 @@ jobs:
         run: npx eslint index.js
       - name: 'Run tests'
         run: npm test
-      - uses: JS-DevTools/npm-publish@v2
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: 'publish'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
