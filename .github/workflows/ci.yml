@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Init repository"
+        uses: actions/checkout@v3
+      - name: 'Setup Node'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - name: 'Install dependencies'
+        run: npm install
+      - name: 'Run lint'
+        run: npx eslint index.js
+      - name: "Run tests"
+        run: mocha
+      - name: "Publish to NPM"
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: "${{ secrets.NPM_TOKEN }}"

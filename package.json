@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/Edgarlct/iim-td4/issues"
   },
-  "homepage": "https://github.com/Edgarlct/iim-td4#readme"
+  "homepage": "https://github.com/Edgarlct/iim-td4#readme",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0"
+  }
 }
