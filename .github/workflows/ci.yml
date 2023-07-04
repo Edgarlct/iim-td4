@@ -1,25 +1,25 @@
-#name: CI
-#
-#on:
-#  push:
-#
-#jobs:
-#  publish:
-#    runs-on: ubuntu-latest
-#    if: "startsWith(github.event.head_commit.message, '[PATCH]') || startsWith(github.event.head_commit.message, '[MINOR]') || startsWith(github.event.head_commit.message, '[MAJOR]')"
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: actions/setup-node@v3
-#        with:
-#          node-version: "18"
-#          registry-url: "https://registry.npmjs.org/"
-#      - name: 'Install dependencies'
-#        run: npm install
-#      - name: 'run lint'
-#        run: npx eslint index.js
-#      - name: 'Run tests'
-#        run: npm test
-#      - name: 'publish'
-#        run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+name: CI
+
+on:
+  push:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: "startsWith(github.event.head_commit.message, '[PATCH]') || startsWith(github.event.head_commit.message, '[MINOR]') || startsWith(github.event.head_commit.message, '[MAJOR]')"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org/"
+      - name: 'Install dependencies'
+        run: npm install
+      - name: 'run lint'
+        run: npx eslint index.js
+      - name: 'Run tests'
+        run: npm test
+      - name: 'publish'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

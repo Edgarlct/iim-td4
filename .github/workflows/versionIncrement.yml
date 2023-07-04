@@ -15,10 +15,10 @@ jobs:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
       - run: git config --global user.name 'EdgarLct'
       - run: git config --global user.email 'edgar.lecomte@icloud.com'
-      - run: npm version patch -m "[PATCH] %s"
+      - run: npm version patch -m "[RELEASE] %s"
         if: "startsWith(github.event.head_commit.message, '[PATCH]')"
-      - run: npm version minor -m "[MINOR] %s"
+      - run: npm version minor -m "[RELEASE] %s"
         if: "startsWith(github.event.head_commit.message, '[MINOR]')"
-      - run: npm version major -m "[MAJOR] %s"
+      - run: npm version major -m "[RELEASE] %s"
         if: "startsWith(github.event.head_commit.message, '[MAJOR]')"
       - run: git push
