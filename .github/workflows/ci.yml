@@ -2,11 +2,11 @@ name: CI
 
 on:
   push:
-  pull_request:
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: "startsWith(github.event.head_commit.message, '[PATCH]') || startsWith(github.event.head_commit.message, '[MINOR]') || startsWith(github.event.head_commit.message, '[MAJOR]')"
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
